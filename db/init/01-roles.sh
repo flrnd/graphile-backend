@@ -1,11 +1,11 @@
 #!/bin/bash
 psql -U $POSTGRES_USER -d $POSTGRES_DB << EOF
-create role $W_ROLE login password '$W_ROLE_PASSWD';
+create role $POSTGRAPHILE_ROLE login password '$POSTGRAPHILE_ROLE_PASSWORD';
 
 create role user_login;
-grant user_login to $W_ROLE;
+grant user_login to $POSTGRAPHILE_ROLE;
 create role anonymous_login;
-grant anonymous_login to $W_ROLE;
+grant anonymous_login to $POSTGRAPHILE_ROLE;
 
 -- after schema creation and before function creation
 alter default privileges revoke execute on functions from public;

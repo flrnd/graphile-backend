@@ -32,10 +32,10 @@ services:
     command: >
       --connection "${DATABASE_URL}"
       --port 5433
-      --schema website
-      --default-role user_login
+      --schema "${POSTGRES_DEFAULT_SCHEMA}"
+      --default-role "${DEFAULT_ROLE}"
       --append-plugins postgraphile-plugin-connection-filter
-      --jwt-token-identifier website.jwt_token
+      --jwt-token-identifier "${POSTGRES_DEFAULT_SCHEMA}".jwt_token
       --jwt-secret "${JWT_SECRET}"
 
 networks:
